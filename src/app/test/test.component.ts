@@ -6,29 +6,40 @@ import { Component, OnInit } from '@angular/core';
     <h2>
       Welcome {{name}}
     </h2>
-    <input [id]="myId" type="text" value="Naveen">
-    <input disabled = "{{false}}" id="{{myId}}" type="text" value="Naveen">
-    <input [disabled] = "false" id="{{myId}}" type="text" value="Devinda">
-    <input bind-disabled = "isDisabled" id="{{myId}}" type="text" value="Rajasekara">
+
+    <input #myInput type="text">
+    <button (click)="logMessage(myInput)">Log</button>
   `,
-  styles: [`
-    div {
-      color: green;
-    }
-  `]
+  styles: []
 })
 export class TestComponent implements OnInit {
 
   public name = 'Naveen';
-  public myId = 'testId';
-  public isDisabled = false;
+  public greeting = "";
+  // public hasError = false;
+  // public isSpecial = true;
+  // public highlichtColor = "orange";
+  // public titleStyles = {
+  //   color: "blue",
+  //   fontStyle: "italic"
+  // }
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  logMessage(value) {
+    console.log(value);
+  }
+
   greetUser() {
     return 'Hello ' + this.name;
+  }
+
+  onClick(event) {
+    console.log(event);
+    this.greeting = event.type;
   }
 
 }

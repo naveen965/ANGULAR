@@ -3,42 +3,24 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   template: `
-    <h2>
-      Welcome {{name}}
-    </h2>
-    <input [(ngModel)] = "name" type="text">
-    {{name}}
+    <div *ngIf="displayName; then thenBlock; else elseBlock"></div>
+
+    <ng-template #thenBlock>
+      <h2>Cosdevolution</h2>
+    </ng-template>  
+
+    <ng-template #elseBlock>
+      <h2>Hidden</h2>
+    </ng-template>
   `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
-  public name = '';
-  // public greeting = '';
-  // public hasError = false;
-  // public isSpecial = true;
-  // public highlichtColor = "orange";
-  // public titleStyles = {
-  //   color: "blue",
-  //   fontStyle: "italic"
-  // }
-
+  displayName = true;
   constructor() { }
 
   ngOnInit() {
-  }
-
-  logMessage(value) {
-    console.log(value);
-  }
-
-  greetUser() {
-    return 'Hello ' + this.name;
-  }
-
-  onClick(event) {
-    console.log(event);
-    this.greeting = event.type;
   }
 
 }
